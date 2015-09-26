@@ -132,7 +132,7 @@ for i in ipairs(bedcolors) do
 		on_rotate = screwdriver.disallow,
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
 			local inv = digger:get_inventory()
-			if digger:get_player_control().sneak and inv:room_for_item("main", "bed_"..color.."_regular 1") then
+			if not digger:get_player_control().sneak and inv:room_for_item("main", "bed_"..color.."_regular 1") then
 				inv:remove_item("main", "homedecor:bed_"..color.."_kingsize 1")
 				inv:add_item("main", "homedecor:bed_"..color.."_regular 2")
 			end
